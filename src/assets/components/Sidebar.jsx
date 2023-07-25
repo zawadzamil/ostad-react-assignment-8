@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 import { ListGroup } from "react-bootstrap";
 
-export default function Sidebar() {
+export default function Sidebar({ income, expense }) {
+
     return (
         <Fragment>
             <div className="report mt-4 bg-warning">
@@ -9,13 +10,13 @@ export default function Sidebar() {
                 <div className="list">
                     <ListGroup>
                         <ListGroup.Item className="fs-4">
-                            Total Income:{" "}
+                            Total Income: {income}
                         </ListGroup.Item>
                         <ListGroup.Item className="fs-4">
-                            Total Expense:{" "}
+                            Total Expense: {expense}
                         </ListGroup.Item>
-                        <ListGroup.Item className="fs-4 fw-bold">
-                            Cash in Hand:{" "}
+                        <ListGroup.Item className={`fs-4 fw-bold ${(income - expense) < 0 ? 'text-danger' : 'text-success'}`}>
+                            Cash in Hand: {income - expense}
                         </ListGroup.Item>
                     </ListGroup>
                 </div>
